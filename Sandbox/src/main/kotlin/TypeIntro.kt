@@ -17,4 +17,5 @@ fun main() {
     println("Le nom du pub $nomDuPub dont le propriétaire est $nomPatron")
     println("$playerName à $nombrePieces pièces d'or")
     println("Voici la carte des boissons $carteBoissons")
+    println(playerName.reversed())
 }
