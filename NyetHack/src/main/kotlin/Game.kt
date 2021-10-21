@@ -31,4 +31,24 @@ fun main() {
     println("(Aura : $auraColor)" + "(Béni : ${if (isBlessed) "OUI" else "NON"})")
     println("$name $healthStatus")
 
+    // Défi : Format de l'Etat configurable Solution trouvé sur le net
+    val statusFormatString = "(HP)(A) -> H"
+    val formatSpecifiers = "HP|H|A".toRegex()
+
+    var result = StringBuffer()
+
+    var i = 0
+    formatSpecifiers.findAll(statusFormatString).forEach { match ->
+        result.append(statusFormatString.substring(i,match.range.start))
+        result.append(when (match.value) {
+            "H" -> "$name $healthStatus"
+            "HP" -> "HP : $healthPoints"
+            "A" -> "Aura : $auraColor"
+            else -> "?"
+        })
+        i = match.range.last+1
+    }
+    result.append(statusFormatString.substring(i))
+
+    println("$result")
 }
