@@ -5,7 +5,15 @@ fun main() {
     val isImmortal = false
 
     val auraVisible = isBlessed && healthPoints > 50 || isImmortal
-    val auraColor = if (auraVisible) "VERTE" else "AUCUNE"
+    println(auraVisible)
+
+    val karma = (Math.pow(Math.random(), (110 - healthPoints) / 100.0) * 20).toInt()
+    val auraColor = when (karma) {
+        in 16..20 -> "VERT"
+        in 11..15 -> "VIOLET"
+        in 6..10 -> "ORANGE"
+        else -> "ROUGE"
+    }
 
     val healthStatus = when (healthPoints) {
         100 -> "est en parfaite condtion !"
