@@ -19,8 +19,8 @@ fun main() {
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
     defiFormatEtatConfigurable(name, healthStatus, healthPoints, auraColor)
 
-    val drunkLevel = castFireball()
-    println(drunkLevel)
+    val drunkLevel = castFireball(5)
+    println(drunkLevel(drunkLevel))
 }
 
 private fun printPlayerStatus(
@@ -98,4 +98,12 @@ private fun castFireball(numFireballs: Int = 2): Int {
         9 -> 45
         else -> 50
     }
+}
+
+private fun drunkLevel(drunk: Int) = when (drunk) {
+    in 1..10 -> "Pompette"
+    in 11..20 -> "Pinté"
+    in 21..30 -> "Murgé"
+    in 31..40 -> "Imbibé"
+    else -> "Décalqué"
 }
