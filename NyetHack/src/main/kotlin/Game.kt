@@ -1,3 +1,5 @@
+import kotlin.math.pow
+
 fun main() {
     val name = "Madrigal"
     var healthPoints = 89
@@ -30,16 +32,13 @@ private fun printPlayerStatus(
     println("$name $healthStatus")
 }
 
-private fun auraColor(healthPoints: Int): String {
-    val karma = (Math.pow(Math.random(), (110 - healthPoints) / 100.0) * 20).toInt()
-    val auraColor = when (karma) {
-        in 16..20 -> "VERT"
-        in 11..15 -> "VIOLET"
-        in 6..10 -> "ORANGE"
-        else -> "ROUGE"
-    }
-    return auraColor
+private fun auraColor(healthPoints: Int) = when ((Math.random().pow((110 - healthPoints) / 100.0) * 20).toInt()) {
+    in 16..20 -> "VERT"
+    in 11..15 -> "VIOLET"
+    in 6..10 -> "ORANGE"
+    else -> "ROUGE"
 }
+
 
 private fun defiFormatEtatConfigurable(
     name: String,
@@ -54,7 +53,7 @@ private fun defiFormatEtatConfigurable(
 
     var i = 0
     formatSpecifiers.findAll(statusFormatString).forEach { match ->
-        result.append(statusFormatString.substring(i, match.range.start))
+        result.append(statusFormatString.substring(i, match.range.first))
         result.append(
             when (match.value) {
                 "H" -> "$name $healthStatus"
@@ -83,4 +82,4 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (he
 }
 
 
-private fun castFireball(numFirebals: Int = 2) = println("Apparition d'un verre de Fireball. (x$numFirebals)")
+private fun castFireball(numFireballs: Int = 2) = println("Apparition d'un verre de Fireball. (x$numFireballs)")
