@@ -7,19 +7,28 @@ fun main() {
     val auraVisible = isBlessed && healthPoints > 50 || isImmortal
     println(auraVisible)
 
-    val auraColor = defiAuraColeurKarma(healthPoints)
+    val auraColor = auraColor(healthPoints)
 
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
-// Etat de santé du joueur
-    println("(Aura : $auraColor)" + "(Béni : ${if (isBlessed) "OUI" else "NON"})")
-    println("$name $healthStatus")
+    // Etat de santé du joueur
+    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
 
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
     defiFormatEtatConfigurable(name, healthStatus, healthPoints, auraColor)
 }
 
-private fun defiAuraColeurKarma(healthPoints: Int): String {
+private fun printPlayerStatus(
+    auraColor: String,
+    isBlessed: Boolean,
+    name: String,
+    healthStatus: String
+) {
+    println("(Aura : $auraColor)" + "(Béni : ${if (isBlessed) "OUI" else "NON"})")
+    println("$name $healthStatus")
+}
+
+private fun auraColor(healthPoints: Int): String {
     val karma = (Math.pow(Math.random(), (110 - healthPoints) / 100.0) * 20).toInt()
     val auraColor = when (karma) {
         in 16..20 -> "VERT"
