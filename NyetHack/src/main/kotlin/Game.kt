@@ -16,6 +16,8 @@ fun main() {
 
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
     defiFormatEtatConfigurable(name, healthStatus, healthPoints, auraColor)
+
+    castFireball(5)
 }
 
 private fun printPlayerStatus(
@@ -81,4 +83,8 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
         else -> "est dans une condition épouvantable !"
     }
     return healthStatus
+}
+
+private fun castFireball(numFirebals: Int) {
+    println("Apparition d'un verre de Fireball. (x$numFirebals)")
 }
