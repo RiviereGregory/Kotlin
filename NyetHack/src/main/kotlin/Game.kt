@@ -70,21 +70,17 @@ private fun defiFormatEtatConfigurable(
     println("$result")
 }
 
-private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean): String {
-    val healthStatus = when (healthPoints) {
-        100 -> "est en parfaite condtion !"
-        in 90..99 -> "a quelques égratinures."
-        in 75..89 -> if (isBlessed) {
-            "a quelques blessures mineures, mais se rétablit vite !"
-        } else {
-            "a quelques blessures mineures."
-        }
-        in 15..74 -> "semble mal en point."
-        else -> "est dans une condition épouvantable !"
+private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (healthPoints) {
+    100 -> "est en parfaite condtion !"
+    in 90..99 -> "a quelques égratinures."
+    in 75..89 -> if (isBlessed) {
+        "a quelques blessures mineures, mais se rétablit vite !"
+    } else {
+        "a quelques blessures mineures."
     }
-    return healthStatus
+    in 15..74 -> "semble mal en point."
+    else -> "est dans une condition épouvantable !"
 }
 
-private fun castFireball(numFirebals: Int = 2) {
-    println("Apparition d'un verre de Fireball. (x$numFirebals)")
-}
+
+private fun castFireball(numFirebals: Int = 2) = println("Apparition d'un verre de Fireball. (x$numFirebals)")
