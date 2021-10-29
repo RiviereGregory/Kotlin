@@ -1,24 +1,20 @@
 fun main() {
-    runSimulation("Guyal", ::printConstructionCost) { playerName, numBuildings ->
+    runSimulation()
+
+}
+
+fun runSimulation() {
+    val greetingFunction = configureGreetingFunction()
+    println(greetingFunction("Guyal"))
+}
+
+fun configureGreetingFunction(): (String) -> String {
+    val structureType = "hopitaux"
+    var numBuildings = 5
+    return { playerName ->
         val currentYear = 2021
-        println("Ajout de $numBuildings maisons")
+        numBuildings += 1
+        println("Ajout de $numBuildings $structureType")
         "Bienvenue à SimVillage, $playerName ! (copyright $currentYear)"
     }
-
-}
-
-// utilisation de inline pour optimiser les lambda dans la JVM
-inline fun runSimulation(
-    playerName: String,
-    costPrinter: (Int) -> Unit,
-    greetingFunction: (String, Int) -> String
-) {
-    val numBuildings = (1..3).shuffled().last()
-    costPrinter(numBuildings)
-    println(greetingFunction(playerName, numBuildings))
-}
-
-fun printConstructionCost(numBuildings: Int) {
-    val cost = 500
-    println("Coût de la construction : ${cost * numBuildings}")
 }
