@@ -7,7 +7,8 @@ fun main() {
 
 }
 
-fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
+// utilisation de inline pour optimiser les lambda dans la JVM
+inline fun runSimulation(playerName: String, greetingFunction: (String, Int) -> String) {
     val numBuildings = (1..3).shuffled().last()
     println(greetingFunction(playerName, numBuildings))
 }
