@@ -19,3 +19,5 @@ H
 src/main/kotlin/Hello.kt,e\3\e30d8e81980c204ce32444753966bf8cfe41c287
 L
 src/main/kotlin/TypeIntro.kt,6\8\68c76e0b48b2cbc31bde0025ea4750170b27d5b2
+M
+src/main/kotlin/SimVillage.kt,c\2\c278a5b2e9caa7cf13ee99a9040197c1bb014e35
