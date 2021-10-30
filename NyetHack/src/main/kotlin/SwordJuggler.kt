@@ -5,8 +5,12 @@ fun main() {
         swordJuggling = 2
     }
 
-    proficiencyCheck(swordJuggling)
-    swordJuggling = swordJuggling!!.plus(1)
+    try {
+        proficiencyCheck(swordJuggling)
+        swordJuggling = swordJuggling!!.plus(1)
+    } catch (e: UnskilledSwordJugglerException) {
+        println(e)
+    }
     println("Vous jonglez avec $swordJuggling épées!")
 }
 
