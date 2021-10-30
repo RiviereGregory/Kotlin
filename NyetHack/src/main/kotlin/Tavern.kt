@@ -1,5 +1,11 @@
 fun main() {
-    var beverage = readLine()!!.capitalize()
+    var beverage = readLine()
+
+    if (beverage != null) {
+        beverage = beverage.capitalize()
+    } else {
+        println("Je ne peux pas faire cela sans planter - beverage = null !!!")
+    }
 
     println(beverage)
 }
