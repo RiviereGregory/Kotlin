@@ -8,14 +8,14 @@ fun main() {
     try {
         proficiencyCheck(swordJuggling)
         swordJuggling = swordJuggling!!.plus(1)
-    } catch (e: UnskilledSwordJugglerException) {
+    } catch (e: Exception) {
         println(e)
     }
     println("Vous jonglez avec $swordJuggling épées!")
 }
 
 fun proficiencyCheck(swordJuggling: Int?) {
-    swordJuggling ?: throw UnskilledSwordJugglerException()
+    checkNotNull(swordJuggling, { "Le joueur ne sait pas jongler avec des épées" })
 }
 
 class UnskilledSwordJugglerException() :
