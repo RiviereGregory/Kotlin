@@ -7,5 +7,6 @@ fun main() {
         println("Je ne peux pas faire cela sans planter - beverage = null !!!")
     }
 
-    println(beverage)
+    val beverageServed: String = beverage ?: "Buttered Ale"
+    println(beverageServed)
 }
