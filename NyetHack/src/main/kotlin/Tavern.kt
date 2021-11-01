@@ -1,7 +1,8 @@
 const val TAVERN_NAME = "Taernyl's Folly"
 
 fun main() {
-    placeOrder("shandy,Dragon's Breath,5.91")
+    // placeOrder("shandy,Dragon's Breath,5.91")
+    placeOrder("elixir,Shirley's Temple,4.12")
 }
 
 private fun placeOrder(menuData: String) {
@@ -13,8 +14,12 @@ private fun placeOrder(menuData: String) {
     val message = "Madrigal achète un(e) $name ($type) à $price."
     println(message)
 
-    val phrase = "Ah, quelle merveillece $name"
-    println("madrigal s'écrie : ${toDragonSpeak(phrase)}")
+    val phrase = if (name == "Dragon's Breath") {
+        "madrigal s'écrie : ${toDragonSpeak("Ah, quelle merveillece $name")}"
+    } else {
+        "Madrigal dit merci pour ce $name"
+    }
+    println(phrase)
 }
 
 private fun toDragonSpeak(phrase: String) =
