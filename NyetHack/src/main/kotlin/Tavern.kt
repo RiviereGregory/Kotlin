@@ -6,6 +6,8 @@ var playerGold = 10
 var playerSilver = 10
 var wasDragonSBreath = 5
 val pint = 0.125
+val valueDragonCoin = 1.43
+val playerDragonCoin = 5
 
 fun main() {
     placeOrder("shandy,Dragon's Breath,5.91")
@@ -29,11 +31,18 @@ fun performPurchase(price: Double): Boolean {
     playerGold = remainingGold
     playerSilver = remainingSilver
     displayBalance()
+    paidDragonCoin(price)
     return true
 }
 
 private fun displayBalance() {
     println("Solde de la bourse du joueur : Or : $playerGold , Argent : $playerSilver")
+}
+
+private fun paidDragonCoin(price: Double){
+    var priceDC = price / valueDragonCoin
+    val remainingBalanceDC = playerDragonCoin - priceDC
+    println("Solde restant en DragonCoin: ${"%.4f".format(remainingBalanceDC)}")
 }
 
 private fun placeOrder(menuData: String) {
