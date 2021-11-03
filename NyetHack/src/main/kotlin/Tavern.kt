@@ -10,7 +10,12 @@ fun main() {
 
 fun performPurchase(price: Double) {
     displayBalance()
+    var totalPurse = playerGold + (playerSilver / 100.0)
+    println("Solde de la bourse : $totalPurse")
     println("Achat d'une boisson à $price")
+
+    val remainingBalance = totalPurse - price
+    println("Solde restant : ${"%.2f".format(remainingBalance)}")
 }
 
 private fun displayBalance() {
