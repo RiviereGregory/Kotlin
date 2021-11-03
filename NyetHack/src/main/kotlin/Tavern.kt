@@ -12,13 +12,16 @@ fun main() {
     //placeOrder("elixir,Shirley's Temple,4.12")
 }
 
-fun performPurchase(price: Double) {
+fun performPurchase(price: Double): Boolean {
     displayBalance()
     var totalPurse = playerGold + (playerSilver / 100.0)
     println("Solde de la bourse : $totalPurse")
     println("Achat d'une boisson à $price")
 
     val remainingBalance = totalPurse - price
+    if (remainingBalance < 0) {
+        return false
+    }
     println("Solde restant : ${"%.2f".format(remainingBalance)}")
 
     val remainingGold = remainingBalance.toInt()
@@ -26,6 +29,7 @@ fun performPurchase(price: Double) {
     playerGold = remainingGold
     playerSilver = remainingSilver
     displayBalance()
+    return true
 }
 
 private fun displayBalance() {
@@ -38,9 +42,15 @@ private fun placeOrder(menuData: String) {
     println("Madrigal parle avec $tavernMaster de sa commande")
 
     val (type, name, price) = menuData.split(',')
-    val message = "Madrigal achète un(e) $name ($type) à $price."
-    println(message)
-    performPurchase(price.toDouble())
+    for (i in 1..2) {
+        if (performPurchase(price.toDouble())) {
+            val message = "Madrigal achète un(e) $name ($type) à $price."
+            println(message)
+        } else {
+            println("Madrigal n'a pas assez d'argent")
+        }
+    }
+
 
     if (name == "Dragon's Breath") {
         println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
