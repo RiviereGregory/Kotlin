@@ -4,6 +4,8 @@ const val TAVERN_NAME = "Taernyl's Folly"
 
 var playerGold = 10
 var playerSilver = 10
+var wasDragonSBreath = 5
+val pint = 0.125
 
 fun main() {
     placeOrder("shandy,Dragon's Breath,5.91")
@@ -49,6 +51,16 @@ private fun placeOrder(menuData: String) {
         "Madrigal dit merci pour ce $name"
     }
     println(phrase)
+
+//    Défi calcul du nombre de pinte restante
+    numberPintsRemaining(12)
+}
+
+private fun numberPintsRemaining(nbPints: Int) {
+    val nbPintsInWas = wasDragonSBreath / pint
+    val nbPintsRemaining = nbPintsInWas.toInt() - nbPints
+    println("Nombre de pintes restant dans le fût $nbPintsRemaining")
+
 }
 
 private fun toDragonSpeak(phrase: String) =
