@@ -59,7 +59,8 @@ build/
 .idea/jarRepositories.xml
 .idea/csv-plugin.xml
 .idea/libraries-with-intellij-classes.xml
-.idea/sonarlint/
+.idea/sonarlint
+.idea/sonarlint/issuestore
 node_modules/
 .rpt2_cache/
 libraries/tools/kotlin-test-js-runner/lib/
