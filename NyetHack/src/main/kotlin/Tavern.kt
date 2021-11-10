@@ -8,10 +8,27 @@ var wasDragonSBreath = 5
 val pint = 0.125
 val valueDragonCoin = 1.43
 val playerDragonCoin = 5
+val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 
 fun main() {
+    if (patronList.contains("Eli")) {
+        println("Le maitre de la taverne dit qu'Eli joue aux cartes.")
+    } else {
+        println("Le maitre de la taverne dit qu'Eli n'est pas là.")
+    }
+    if (patronList.containsAll(listOf("Mordoc", "Sophie"))) {
+        println("Le maitre de la taverne dit qu'ils sont à côté de la marmite de pot-au-feu.")
+    } else {
+        println("Le maitre de la taverne dit qu'ils sont partis.")
+    }
     placeOrder("shandy,Dragon's Breath,5.91")
     //placeOrder("elixir,Shirley's Temple,4.12")
+    println(patronList)
+    patronList.remove("Eli")
+    patronList.add("Alex")
+    patronList.add(0, "Alex")
+    patronList[0] = "Alexis"
+    println(patronList)
 }
 
 fun performPurchase(price: Double): Boolean {
@@ -39,7 +56,7 @@ private fun displayBalance() {
     println("Solde de la bourse du joueur : Or : $playerGold , Argent : $playerSilver")
 }
 
-private fun paidDragonCoin(price: Double){
+private fun paidDragonCoin(price: Double) {
     var priceDC = price / valueDragonCoin
     val remainingBalanceDC = playerDragonCoin - priceDC
     println("Solde restant en DragonCoin: ${"%.4f".format(remainingBalanceDC)}")
