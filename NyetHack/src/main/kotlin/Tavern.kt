@@ -10,29 +10,26 @@ val pint = 0.125
 val valueDragonCoin = 1.43
 val playerDragonCoin = 5
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
+val lastName = listOf("Ironfoot", "Fernsworth", "Baggins")
+val uniquePatrons = mutableSetOf<String>()
 val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
 
 fun main() {
-    if (patronList.contains("Eli")) {
-        println("Le maitre de la taverne dit qu'Eli joue aux cartes.")
-    } else {
-        println("Le maitre de la taverne dit qu'Eli n'est pas là.")
-    }
-    if (patronList.containsAll(listOf("Mordoc", "Sophie"))) {
-        println("Le maitre de la taverne dit qu'ils sont à côté de la marmite de pot-au-feu.")
-    } else {
-        println("Le maitre de la taverne dit qu'ils sont partis.")
-    }
-    //placeOrder("elixir,Shirley's Temple,4.12")
-    patronList.forEachIndexed { index, patron ->
-        println("Bonjour, $patron - vous êtes le n°${index + 1} dans la file.")
-        placeOrder(patron, menuList.shuffled().first())
-    }
 
-    menuList.forEachIndexed { index, data ->
-        println("$index : $data")
+    (0..9).forEach {
+        val first = patronList.shuffled().first()
+        val last = lastName.shuffled().first()
+        val name = "$first $last"
+        uniquePatrons += name
+    }
+    println(uniquePatrons)
+
+    var orderCount = 0
+    while (orderCount <= 9) {
+        placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
+        orderCount++
     }
 }
 
