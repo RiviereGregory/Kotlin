@@ -28,7 +28,7 @@ fun main() {
     //placeOrder("elixir,Shirley's Temple,4.12")
     patronList.forEachIndexed { index, patron ->
         println("Bonjour, $patron - vous êtes le n°${index + 1} dans la file.")
-        placeOrder(patron, "shandy,Dragon's Breath,5.91")
+        placeOrder(patron, menuList.shuffled().first())
     }
 
     menuList.forEachIndexed { index, data ->
@@ -81,9 +81,9 @@ private fun placeOrder(patronName: String, menuData: String) {
         println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
     }
     val phrase = if (name == "Dragon's Breath") {
-        "madrigal s'écrie : ${toDragonSpeak("Ah, quelle merveille ce $name")}"
+        "$patronName s'écrie : ${toDragonSpeak("Ah, quelle merveille ce $name")}"
     } else {
-        "Madrigal dit merci pour ce $name"
+        "$patronName dit merci pour ce $name"
     }
     println(phrase)
 
