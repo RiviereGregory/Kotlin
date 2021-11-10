@@ -23,8 +23,8 @@ fun main() {
     }
     placeOrder("shandy,Dragon's Breath,5.91")
     //placeOrder("elixir,Shirley's Temple,4.12")
-    patronList.forEach { patron ->
-        println("Bonjour, $patron")
+    patronList.forEachIndexed { index, patron ->
+        println("Bonjour, $patron - vous êtes le n°${index + 1} dans la file.")
     }
 }
 
