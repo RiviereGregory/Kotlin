@@ -21,10 +21,10 @@ fun main() {
     } else {
         println("Le maitre de la taverne dit qu'ils sont partis.")
     }
-    placeOrder("shandy,Dragon's Breath,5.91")
     //placeOrder("elixir,Shirley's Temple,4.12")
     patronList.forEachIndexed { index, patron ->
         println("Bonjour, $patron - vous êtes le n°${index + 1} dans la file.")
+        placeOrder(patron, "shandy,Dragon's Breath,5.91")
     }
 }
 
@@ -59,21 +59,15 @@ private fun paidDragonCoin(price: Double) {
     println("Solde restant en DragonCoin: ${"%.4f".format(remainingBalanceDC)}")
 }
 
-private fun placeOrder(menuData: String) {
+private fun placeOrder(patronName: String, menuData: String) {
     val indexOfApostrophe = TAVERN_NAME.indexOf('\'')
     val tavernMaster = TAVERN_NAME.substring(0 until indexOfApostrophe)
-    println("Madrigal parle avec $tavernMaster de sa commande")
+    println("$patronName parle avec $tavernMaster de sa commande")
 
     val (type, name, price) = menuData.split(',')
-    for (i in 1..2) {
-        if (performPurchase(price.toDouble())) {
-            val message = "Madrigal achète un(e) $name ($type) à $price."
-            println(message)
-        } else {
-            println("Madrigal n'a pas assez d'argent")
-        }
-    }
 
+    val message = "$patronName achète un(e) $name ($type) à $price."
+    println(message)
 
     if (name == "Dragon's Breath") {
         println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
