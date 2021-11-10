@@ -17,7 +17,7 @@ val menuList = File("data/tavern-menu-items.txt")
     .split("\n")
 
 fun main() {
-
+    displayMenu()
     (0..9).forEach {
         val first = patronList.shuffled().first()
         val last = lastName.shuffled().first()
@@ -31,6 +31,27 @@ fun main() {
         placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
         orderCount++
     }
+}
+
+fun displayMenu() {
+    val message = "** Bienvenu à la taverne Folly **"
+    println(message)
+    menuList.forEach { menuData ->
+        val (_, name, price) = menuData.split(',')
+        val size = message.length - (name.length + price.length)
+
+        val split = name.split(" ")
+        split.forEachIndexed { index, s ->
+            print(s.capitalize())
+            if (split.size > index + 1) {
+                print(" ")
+            }
+        }
+        print(".".repeat(size))
+        println(price)
+    }
+    println()
+    println()
 }
 
 fun performPurchase(price: Double): Boolean {
