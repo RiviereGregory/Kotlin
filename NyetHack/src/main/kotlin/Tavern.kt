@@ -36,19 +36,26 @@ fun main() {
 fun displayMenu() {
     val message = "** Bienvenu à la taverne Folly **"
     println(message)
-    menuList.forEach { menuData ->
-        val (_, name, price) = menuData.split(',')
+    var oldType = ""
+    menuList.sorted().forEach { menuData ->
+        var menuMessage = ""
+        val (type, name, price) = menuData.split(',')
+        if (oldType != type) {
+            oldType = type
+            println("~[$type]~")
+        }
         val size = message.length - (name.length + price.length)
 
         val split = name.split(" ")
         split.forEachIndexed { index, s ->
-            print(s.capitalize())
+            menuMessage += s.capitalize()
             if (split.size > index + 1) {
-                print(" ")
+                menuMessage += " "
             }
         }
-        print(".".repeat(size))
-        println(price)
+        menuMessage += ".".repeat(size)
+        menuMessage += price
+        println(menuMessage)
     }
     println()
     println()
