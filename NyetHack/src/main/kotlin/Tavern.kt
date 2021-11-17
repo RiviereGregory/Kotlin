@@ -79,6 +79,13 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     performPurchase(price.toDouble(), patronName)
 
+    if (patronGold[patronName]!! <= 0.0) {
+        patronGold.remove(patronName)
+        uniquePatrons.remove(patronName)
+        println("$patronName n'a pas suffisamment d'argent et doit sortir de la taverne")
+        return
+    }
+
     if (name == "Dragon's Breath") {
         println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
     }
