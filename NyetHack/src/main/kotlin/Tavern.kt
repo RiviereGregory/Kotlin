@@ -1,14 +1,9 @@
 import java.io.File
-import kotlin.math.roundToInt
 
 const val TAVERN_NAME = "Taernyl's Folly"
 
-var playerGold = 10
-var playerSilver = 10
 var wasDragonSBreath = 5
 val pint = 0.125
-val valueDragonCoin = 1.43
-val playerDragonCoin = 5
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot", "Fernsworth", "Baggins")
 val uniquePatrons = mutableSetOf<String>()
@@ -34,6 +29,8 @@ fun main() {
         placeOrder(uniquePatrons.shuffled().first(), menuList.shuffled().first())
         orderCount++
     }
+
+    displayPatronBalances()
 
 }
 
@@ -65,35 +62,9 @@ fun displayMenu() {
     println()
 }
 
-fun performPurchase(price: Double): Boolean {
-    displayBalance()
-    var totalPurse = playerGold + (playerSilver / 100.0)
-    println("Solde de la bourse : $totalPurse")
-    println("Achat d'une boisson à $price")
-
-    val remainingBalance = totalPurse - price
-    if (remainingBalance < 0) {
-        return false
-    }
-    println("Solde restant : ${"%.2f".format(remainingBalance)}")
-
-    val remainingGold = remainingBalance.toInt()
-    val remainingSilver = (remainingBalance % 1 * 100).roundToInt()
-    playerGold = remainingGold
-    playerSilver = remainingSilver
-    displayBalance()
-    paidDragonCoin(price)
-    return true
-}
-
-private fun displayBalance() {
-    println("Solde de la bourse du joueur : Or : $playerGold , Argent : $playerSilver")
-}
-
-private fun paidDragonCoin(price: Double) {
-    var priceDC = price / valueDragonCoin
-    val remainingBalanceDC = playerDragonCoin - priceDC
-    println("Solde restant en DragonCoin: ${"%.4f".format(remainingBalanceDC)}")
+fun performPurchase(price: Double, patronName: String) {
+    val totalPurse = patronGold.getValue(patronName)
+    patronGold[patronName] = totalPurse - price
 }
 
 private fun placeOrder(patronName: String, menuData: String) {
@@ -105,6 +76,8 @@ private fun placeOrder(patronName: String, menuData: String) {
 
     val message = "$patronName achète un(e) $name ($type) à $price."
     println(message)
+
+    performPurchase(price.toDouble(), patronName)
 
     if (name == "Dragon's Breath") {
         println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
@@ -118,6 +91,12 @@ private fun placeOrder(patronName: String, menuData: String) {
 
 //    Défi calcul du nombre de pinte restante
     numberPintsRemaining(12)
+}
+
+fun displayPatronBalances() {
+    patronGold.forEach { patron, balance ->
+        println("$patron, solde : ${"%.2f".format(balance)}")
+    }
 }
 
 private fun numberPintsRemaining(nbPints: Int) {
