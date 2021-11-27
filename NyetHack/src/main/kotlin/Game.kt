@@ -1,7 +1,6 @@
 import kotlin.math.pow
 
 fun main() {
-    val name = "Madrigal"
     var healthPoints = 89
     val isBlessed = true
     val isImmortal = false
@@ -16,10 +15,10 @@ fun main() {
     val healthStatus = formatHealthStatus(healthPoints, isBlessed)
 
     // Etat de santé du joueur
-    printPlayerStatus(auraColor, isBlessed, name, healthStatus)
+    printPlayerStatus(auraColor, isBlessed, player.name, healthStatus)
 
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
-    defiFormatEtatConfigurable(name, healthStatus, healthPoints, auraColor)
+    defiFormatEtatConfigurable(player.name, healthStatus, healthPoints, auraColor)
 
     val drunkLevel = player.castFireball()
     println(drunkLevel(drunkLevel))

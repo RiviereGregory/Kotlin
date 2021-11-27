@@ -1,4 +1,9 @@
 class Player {
+    var name = "madrigal"
+        get() = field.capitalize()
+        private set(value) {
+            field = value.trim()
+        }
 
     fun castFireball(numFireballs: Int = 2): Int {
         println("Apparition d'un verre de Fireball. (x$numFireballs)")
