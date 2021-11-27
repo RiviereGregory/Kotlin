@@ -1,3 +1,5 @@
+package fr.riverjach.nyethack
+
 fun main() {
     val player = Player()
 

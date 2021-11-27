@@ -1,3 +1,5 @@
+package fr.riverjach.nyethack
+
 fun main() {
     var swordJuggling: Int? = null
     val isJugglingProficient = (1..3).shuffled().last() == 3

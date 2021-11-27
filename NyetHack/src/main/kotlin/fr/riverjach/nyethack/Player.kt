@@ -1,3 +1,5 @@
+package fr.riverjach.nyethack
+
 import kotlin.math.pow
 
 class Player {
