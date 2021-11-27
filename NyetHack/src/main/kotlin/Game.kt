@@ -6,6 +6,8 @@ fun main() {
     val isBlessed = true
     val isImmortal = false
 
+    val player = Player()
+
     val auraVisible = isBlessed && healthPoints > 50 || isImmortal
     println(auraVisible)
 
@@ -19,7 +21,7 @@ fun main() {
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
     defiFormatEtatConfigurable(name, healthStatus, healthPoints, auraColor)
 
-    val drunkLevel = castFireball(5)
+    val drunkLevel = player.castFireball()
     println(drunkLevel(drunkLevel))
 }
 
@@ -80,24 +82,6 @@ private fun formatHealthStatus(healthPoints: Int, isBlessed: Boolean) = when (he
     }
     in 15..74 -> "semble mal en point."
     else -> "est dans une condition épouvantable !"
-}
-
-
-private fun castFireball(numFireballs: Int = 2): Int {
-    println("Apparition d'un verre de Fireball. (x$numFireballs)")
-    return when (numFireballs) {
-        0 -> 1
-        1 -> 5
-        2 -> 10
-        3 -> 15
-        4 -> 20
-        5 -> 25
-        6 -> 30
-        7 -> 35
-        8 -> 40
-        9 -> 45
-        else -> 50
-    }
 }
 
 private fun drunkLevel(drunk: Int) = when (drunk) {
