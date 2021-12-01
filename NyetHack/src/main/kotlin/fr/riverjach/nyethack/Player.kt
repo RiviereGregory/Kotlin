@@ -1,5 +1,6 @@
 package fr.riverjach.nyethack
 
+import java.io.File
 import kotlin.math.pow
 
 class Player(
@@ -9,10 +10,12 @@ class Player(
     private val isImmortal: Boolean
 ) {
     var name = _name
-        get() = field.capitalize()
+        get() = "${field.capitalize()} de $hometown"
         private set(value) {
             field = value.trim()
         }
+
+    val hometown = selectHometown()
 
     init {
         require(healthPoints > 0) { "healthPoints doit être supérieur à zéro." }
@@ -26,6 +29,12 @@ class Player(
     ) {
         if (name.toLowerCase() == "kar") healthPoints = 40
     }
+
+    private fun selectHometown() = File("data/towns.txt")
+        .readText()
+        .split("\n")
+        .shuffled()
+        .first()
 
     fun castFireball(numFireballs: Int = 2): Int {
         println("Apparition d'un verre de Fireball. (x$numFireballs)")
