@@ -1,7 +1,7 @@
 package fr.riverjach.nyethack
 
 fun main() {
-    val player = Player()
+    val player = Player("Madrigal")
 
     // Etat de santé du joueur
     printPlayerStatus(player)
