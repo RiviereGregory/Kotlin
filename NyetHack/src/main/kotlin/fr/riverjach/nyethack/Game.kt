@@ -6,6 +6,11 @@ fun main() {
     // Etat de santé du joueur
     printPlayerStatus(player)
 
+    // Test Salle
+    var currentRoom = Room("Hall")
+    println(currentRoom.description())
+    println(currentRoom.load())
+
     // Défi : Format de l'Etat configurable Solution trouvé sur le net
     defiFormatEtatConfigurable(player)
 
