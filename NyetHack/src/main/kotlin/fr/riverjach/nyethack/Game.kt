@@ -7,7 +7,7 @@ fun main() {
     printPlayerStatus(player)
 
     // Test Salle
-    var currentRoom = Room("Hall")
+    var currentRoom = TownSquare()
     println(currentRoom.description())
     println(currentRoom.load())
 
