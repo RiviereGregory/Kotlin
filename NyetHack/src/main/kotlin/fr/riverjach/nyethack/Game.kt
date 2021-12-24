@@ -11,7 +11,6 @@ object Game {
 
     init {
         println("Bienvenue, aventurier.")
-        player.castFireball()
     }
 
     fun play() {
@@ -30,7 +29,7 @@ object Game {
             println(drunkLevel(drunkLevel))
 
             print("> Saisissez votre commande :")
-            println("Dernière commande : ${readLine()}")
+            println(GameInput(readLine()).processCommand())
         }
     }
 
@@ -69,5 +68,17 @@ object Game {
         in 21..30 -> "Murgé"
         in 31..40 -> "Imbibé"
         else -> "Décalqué"
+    }
+
+    private class GameInput(arg: String?) {
+        private val input = arg ?: ""
+        val command = input.split(" ")[0]
+        val argument = input.split(" ").getOrElse(1, { "" })
+
+        fun processCommand() = when (command.toLowerCase()) {
+            else -> commandeNotFound()
+        }
+
+        private fun commandeNotFound() = "Je ne comprends pas ce que vous voulez faire!"
     }
 }
