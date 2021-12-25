@@ -6,7 +6,11 @@ fun main() {
 
 object Game {
     private val player = Player("Madrigal")
-    private var currentRoom = TownSquare()
+    private var currentRoom: Room = TownSquare()
+    private var worldMap = listOf(
+        listOf(currentRoom, Room("Tavern"), Room("Back Room")),
+        listOf(Room("Long Corridor"), Room("Generic Room"))
+    )
 
 
     init {
@@ -70,15 +74,32 @@ object Game {
         else -> "Décalqué"
     }
 
+    private fun move(directionInput: String) =
+        try {
+            val direction = Direction.valueOf(directionInput.toUpperCase())
+            val newPosition = direction.updateCoordinate(player.currentPosition)
+            if (!newPosition.isInBounds) {
+                throw IllegalStateException("$direction en dehors des limites")
+            }
+            val newRoom = worldMap[newPosition.y][newPosition.x]
+            player.currentPosition = newPosition
+            currentRoom = newRoom
+            "OK, déplacement de $direction dans ${newRoom.name}.\n ${newRoom.load()}"
+        } catch (e: Exception) {
+            "Direction invalide : $directionInput"
+        }
+
+
     private class GameInput(arg: String?) {
         private val input = arg ?: ""
         val command = input.split(" ")[0]
         val argument = input.split(" ").getOrElse(1, { "" })
 
         fun processCommand() = when (command.toLowerCase()) {
-            else -> commandeNotFound()
+            "move" -> move(argument)
+            else -> commandNotFound()
         }
 
-        private fun commandeNotFound() = "Je ne comprends pas ce que vous voulez faire!"
+        private fun commandNotFound() = "Je ne comprends pas ce que vous voulez faire!"
     }
 }
