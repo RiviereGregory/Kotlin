@@ -12,7 +12,7 @@ open class TownSquare : Room("Place publique") {
     override val dangerLevel = super.dangerLevel - 3
     private var bellSound = "GWONG"
 
-    final override fun load() = "Les villageois sont en liesse à votre arrivée !\n ${rinBell()} "
+    final override fun load() = "Les villageois sont en liesse à votre arrivée !\n ${rinBell(1)} "
 
-    private fun rinBell() = "La cloche annonce votre arrivée. $bellSound"
+    fun rinBell(nbSonne: Int) = "La cloche annonce votre arrivée. " + "$bellSound ".repeat(nbSonne)
 }

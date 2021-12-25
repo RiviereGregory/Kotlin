@@ -106,6 +106,15 @@ object Game {
     }
 
 
+    private fun ring(argument: String): String {
+        var ringText = "Vous ne pouvez faire sonner les cloches que sur la Place Publique"
+        if (currentRoom is TownSquare) {
+            ringText = (currentRoom as TownSquare).rinBell(argument.toIntOrNull() ?: 1)
+        }
+        return ringText
+    }
+
+
     private class GameInput(arg: String?) {
         private val input = arg ?: ""
         val command = input.split(" ")[0]
@@ -118,6 +127,7 @@ object Game {
             }
             "move" -> move(argument)
             "map" -> map()
+            "ring" -> ring(argument)
             else -> commandNotFound()
         }
 
