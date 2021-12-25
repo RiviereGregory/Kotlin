@@ -5,6 +5,7 @@ fun main() {
 }
 
 object Game {
+    private var isFinish = false
     private val player = Player("Madrigal")
     private var currentRoom: Room = TownSquare()
     private var worldMap = listOf(
@@ -18,7 +19,7 @@ object Game {
     }
 
     fun play() {
-        while (true) {
+        while (!isFinish) {
             // Test Salle
             println(currentRoom.description())
             println(currentRoom.load())
@@ -96,6 +97,10 @@ object Game {
         val argument = input.split(" ").getOrElse(1, { "" })
 
         fun processCommand() = when (command.toLowerCase()) {
+            "exit", "quit" -> {
+                isFinish = true
+                "Merci d'avoir participé ${fr.riverjach.nyethack.Game.player.name}"
+            }
             "move" -> move(argument)
             else -> commandNotFound()
         }
