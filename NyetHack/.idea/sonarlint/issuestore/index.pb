@@ -15,3 +15,11 @@ A
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 C
 settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
+_
+/src/main/kotlin/fr/riverjach/nyethack/Tavern.kt,6\6\66e3f68c827acfa9ac49bbfad802645998234d09
+e
+5src/main/kotlin/fr/riverjach/nyethack/SwordJuggler.kt,8\b\8b8c8f78380f7e9e8f39fabbcdd574a66b068b6e
+>
+data/towns.txt,2\a\2aa2503a8d04d0daa442b368dc29c4fb1d56b4c0
+J
+data/tavern-menu-items.txt,7\1\716f1e05dbad113d38ec78571053f1c1e02920cf
