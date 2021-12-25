@@ -90,6 +90,21 @@ object Game {
             "Direction invalide : $directionInput"
         }
 
+    private fun map(): String {
+        var map = ""
+        worldMap.forEachIndexed { y, list ->
+            list.forEachIndexed { x, _ ->
+                map += if (player.currentPosition == Coordinate(x, y)) {
+                    " X"
+                } else {
+                    " O"
+                }
+            }
+            map += "\n"
+        }
+        return map
+    }
+
 
     private class GameInput(arg: String?) {
         private val input = arg ?: ""
@@ -102,6 +117,7 @@ object Game {
                 "Merci d'avoir participé ${fr.riverjach.nyethack.Game.player.name}"
             }
             "move" -> move(argument)
+            "map" -> map()
             else -> commandNotFound()
         }
 
