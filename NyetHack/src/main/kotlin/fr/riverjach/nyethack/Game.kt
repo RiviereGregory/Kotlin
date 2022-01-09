@@ -1,5 +1,7 @@
 package fr.riverjach.nyethack
 
+import kotlin.system.exitProcess
+
 fun main() {
     Game.play()
 }
@@ -90,6 +92,29 @@ object Game {
             "Direction invalide : $directionInput"
         }
 
+    private fun fight() = currentRoom.monster?.let {
+        while (player.healthPoints > 0 && it.healthPoints > 0) {
+            slay(it)
+            Thread.sleep(1000)
+        }
+        "Combat terminé."
+    } ?: "Il n'y a rien a combattre ici."
+
+    private fun slay(monster: Monster) {
+        println("${monster.name} a causé ${monster.attack(player)} dommages !")
+        println("${player.name} a causé ${player.attack(monster)} dommages !")
+
+        if (player.healthPoints <= 0) {
+            println(">>>> Vous avez été vaincu ! Merci d'avoir joué. <<<<")
+            exitProcess(0)
+        }
+
+        if (monster.healthPoints <= 0) {
+            println(">>>> ${monster.name} été vaincu ! <<<<")
+            currentRoom.monster = null
+        }
+    }
+
     private fun map(): String {
         var map = ""
         worldMap.forEachIndexed { y, list ->
@@ -125,6 +150,7 @@ object Game {
                 isFinish = true
                 "Merci d'avoir participé ${fr.riverjach.nyethack.Game.player.name}"
             }
+            "fight" -> fight()
             "move" -> move(argument)
             "map" -> map()
             "ring" -> ring(argument)

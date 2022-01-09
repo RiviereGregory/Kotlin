@@ -2,8 +2,10 @@ package fr.riverjach.nyethack
 
 open class Room(val name: String) {
     protected open val dangerLevel = 5
+    var monster: Monster? = Goblin()
     fun description() = "Salle : $name\n" +
-            "Niveau de danger : $dangerLevel"
+            "Niveau de danger : $dangerLevel\n" +
+            "Créature: ${monster?.description ?: " aucun."}"
 
     open fun load() = "Pas grand-chose à voir ici..."
 }
