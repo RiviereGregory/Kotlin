@@ -5,6 +5,10 @@ class LootBox<T>(item: T) {
     fun fetch(): T? {
         return loot.takeIf { open }
     }
+
+    fun <R> fetch(lootModFunction: (T) -> R): R? {
+        return lootModFunction(loot).takeIf { open }
+    }
 }
 
 class Fedora(val name: String, val value: Int)
@@ -19,4 +23,10 @@ fun main() {
     lootBoxOne.fetch()?.run {
         println("Vous récupérez $name de la boite !")
     }
+
+    val coin = lootBoxOne.fetch() {
+        Coin(it.value * 3)
+    }
+
+    coin?.let { println(it.value) }
 }
