@@ -2,6 +2,7 @@ package fr.riverjach.nyethack
 
 import java.io.File
 import kotlin.math.pow
+import fr.riverjach.nyethack.extensions.random
 
 class Player(
     _name: String,
@@ -48,8 +49,7 @@ class Player(
     private fun selectHometown() = File("data/towns.txt")
         .readText()
         .split("\n")
-        .shuffled()
-        .first()
+        .random()
 
     fun castFireball(numFireballs: Int = 2): Int {
         println("Apparition d'un verre de Fireball. (x$numFireballs)")
