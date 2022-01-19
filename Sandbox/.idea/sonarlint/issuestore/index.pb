@@ -13,3 +13,5 @@ A
 gradlew.bat,2\a\2a45a911a8f1836b0b6c5b758962572012d8f8c3
 C
 settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
+L
+.idea/codeStyles/Project.xml,6\e\6ecd6000a7b6f4a2884412ff19f74193ed089648
