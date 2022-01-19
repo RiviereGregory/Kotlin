@@ -90,10 +90,10 @@ private fun placeOrder(patronName: String, menuData: String) {
     }
 
     if (name == "Dragon's Breath") {
-        println(toDragonSpeak("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !"))
+        println("DRAGON'S BREATH: LA BOISSON DES AVENTURIES !".toDragonSpeak())
     }
     val phrase = if (name == "Dragon's Breath") {
-        "$patronName s'écrie : ${toDragonSpeak("Ah, quelle merveille ce $name")}"
+        "$patronName s'écrie : ${"Ah, quelle merveille ce $name".toDragonSpeak()}"
     } else {
         "$patronName dit merci pour ce $name"
     }
@@ -116,8 +116,8 @@ private fun numberPintsRemaining(nbPints: Int) {
 
 }
 
-private fun toDragonSpeak(phrase: String) =
-    phrase.replace(Regex("[aeiouAEIOU]")) {
+fun String.toDragonSpeak() =
+    this.replace(Regex("[aeiouAEIOU]")) {
         when (it.value) {
             "a", "A" -> "4"
             "e", "E" -> "3"
