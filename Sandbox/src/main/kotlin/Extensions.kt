@@ -8,8 +8,13 @@ fun <T> T.easyPrint(): T {
     return this
 }
 
+infix fun String?.printWithDefault(default: String) = println(this ?: default)
+
 fun main() {
     "Madrigal a quitté le batiment".easyPrint().addEnthusiasm(3).easyPrint()
     42.easyPrint()
     "Combien de voyelles ?".numVowels.easyPrint()
+
+    null printWithDefault "chaine default" // Avec Infix
+    null.printWithDefault("chaine default") // Sans Infix
 }
