@@ -1,8 +1,11 @@
 fun String.addEnthusiasm(amount: Int = 1) = this + "!".repeat(amount)
 
-fun Any.easyPrint() = println(this)
+fun <T> T.easyPrint(): T {
+    println(this)
+    return this
+}
 
-fun main(){
-    "Madrigal a quitté le batiment".addEnthusiasm(3).easyPrint()
+fun main() {
+    "Madrigal a quitté le batiment".easyPrint().addEnthusiasm(3).easyPrint()
     42.easyPrint()
 }
