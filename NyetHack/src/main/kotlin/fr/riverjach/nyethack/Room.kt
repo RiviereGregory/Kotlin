@@ -1,7 +1,7 @@
 package fr.riverjach.nyethack
 
 open class Room(val name: String) {
-    protected open val dangerLevel = 5
+    open val dangerLevel = 5
     var monster: Monster? = Goblin()
     fun description() = "Salle : $name\n" +
             "Niveau de danger : $dangerLevel\n" +
@@ -17,4 +17,10 @@ open class TownSquare : Room("Place publique") {
     final override fun load() = "Les villageois sont en liesse à votre arrivée !\n ${rinBell(1)} "
 
     fun rinBell(nbSonne: Int) = "La cloche annonce votre arrivée. " + "$bellSound ".repeat(nbSonne)
+}
+
+fun Room.configurePitGoblin(block: Room.(Goblin) -> Goblin): Room {
+    val goblin = block(Goblin("Gobelin", description = "Un vilain gobelin"))
+    monster = goblin
+    return this
 }

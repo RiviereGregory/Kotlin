@@ -18,6 +18,10 @@ object Game {
 
     init {
         println("Bienvenue, aventurier.")
+        currentRoom.configurePitGoblin { goblin ->
+            goblin.healthPoints = dangerLevel * 3
+            goblin
+        }
     }
 
     fun play() {
