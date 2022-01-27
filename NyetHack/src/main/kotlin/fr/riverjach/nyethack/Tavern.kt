@@ -9,23 +9,19 @@ var wasDragonSBreath = 5
 val pint = 0.125
 val patronList = mutableListOf("Eli", "Mordoc", "Sophie")
 val lastName = listOf("Ironfoot", "Fernsworth", "Baggins")
-val uniquePatrons = mutableSetOf<String>()
+val uniquePatrons: MutableSet<String> = generateSequence {
+    val first = patronList.random()
+    val last = lastName.random()
+    "$first $last"
+}.take(10).toMutableSet()
+
 val menuList = File("data/tavern-menu-items.txt")
     .readText()
     .split("\n")
-val patronGold = mutableMapOf<String, Double>()
+val patronGold = mutableMapOf<String, Double>().apply { uniquePatrons.forEach { this[it] = 6.0 } }
 
 fun main() {
     displayMenu()
-    (0..9).forEach {
-        val first = patronList.random()
-        val last = lastName.random()
-        val name = "$first $last"
-        uniquePatrons += name
-    }
-    uniquePatrons.forEach {
-        patronGold[it] = 6.0
-    }
 
     var orderCount = 0
     while (orderCount <= 9) {
