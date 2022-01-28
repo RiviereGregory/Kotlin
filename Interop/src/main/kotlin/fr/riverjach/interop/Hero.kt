@@ -30,6 +30,7 @@ fun main() {
     adversary.apologize()
 }
 
+val translator = { utterance: String -> println(utterance.lowercase(Locale.getDefault()).capitalize()) }
 
 fun makeProclamation() = "Salut, Monstre!"
 

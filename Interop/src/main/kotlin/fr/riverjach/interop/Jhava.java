@@ -1,5 +1,7 @@
 package fr.riverjach.interop;
 
+import kotlin.Unit;
+import kotlin.jvm.functions.Function1;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -20,6 +22,9 @@ public class Jhava {
         System.out.println("Nombre maximal de noms : " + Spellbook.MAX_SPELL_COUNT);
 
         Spellbook.getSpellbookGreeting();
+
+        Function1<String, Unit> translator = Hero.getTranslator();
+        translator.invoke("TREVE");
     }
 
     @NotNull
