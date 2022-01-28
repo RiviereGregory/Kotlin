@@ -3,6 +3,7 @@ package gri.riverjach.samodelkin
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.runBlocking
 
 private const val CHARACTER_DATA_KEY = "CHARACTER_DATA_KEY"
 
@@ -25,8 +26,10 @@ class NewCharacterActivity : AppCompatActivity() {
         characterData = savedInstanceState?.characterData ?: CharacterGenerator.generate()
 
         generateButton.setOnClickListener {
-            characterData = CharacterGenerator.generate()
-            displayCharacterData()
+            runBlocking {
+                characterData = fetchCharacterData().await()
+                displayCharacterData()
+            }
         }
 
         displayCharacterData()
