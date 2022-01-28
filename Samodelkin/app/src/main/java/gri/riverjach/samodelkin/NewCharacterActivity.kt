@@ -4,12 +4,24 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
+private const val CHARACTER_DATA_KEY = "CHARACTER_DATA_KEY"
+
 class NewCharacterActivity : AppCompatActivity() {
     private var characterData = CharacterGenerator.generate()
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putSerializable(CHARACTER_DATA_KEY, characterData)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        characterData = savedInstanceState?.let {
+            it.getSerializable(CHARACTER_DATA_KEY) as CharacterGenerator.CharacterData
+        } ?: CharacterGenerator.generate()
+
         generateButton.setOnClickListener {
             characterData = CharacterGenerator.generate()
             displayCharacterData()
