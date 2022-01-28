@@ -9,6 +9,13 @@ public class Jhava {
 
     public static void main(String[] args) {
         System.out.println(Hero.makeProclamation());
+        System.out.println("Noms :");
+        Spellbook spellbook = new Spellbook();
+        for (String spell : spellbook.spells) {
+            System.out.println(spell);
+        }
+
+        System.out.println("Nombre maximal de noms : " + Spellbook.MAX_SPELL_COUNT);
     }
 
     @NotNull

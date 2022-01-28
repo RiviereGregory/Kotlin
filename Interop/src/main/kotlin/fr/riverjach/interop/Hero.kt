@@ -29,3 +29,13 @@ fun makeProclamation() = "Salut, Monstre!"
 fun handOverFood(leftHand: String = "des baies", rightHand: String = "du boeuf") {
     println("Mmmm... Délicieux : $leftHand et $rightHand")
 }
+
+class Spellbook {
+    @JvmField // Permet de n'avoir pas besoin de getter en java
+    val spells = listOf("Magic Ms. L.", "Lay on Hans")
+
+    companion object {
+        @JvmField
+        val MAX_SPELL_COUNT = 10
+    }
+}
