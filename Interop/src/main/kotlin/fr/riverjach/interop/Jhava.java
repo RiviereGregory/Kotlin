@@ -3,6 +3,8 @@ package fr.riverjach.interop;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
+import java.io.IOException;
+
 public class Jhava {
     private int hitPoints = 52489112;
     private String greeting = "BLARGH";
@@ -44,5 +46,17 @@ public class Jhava {
 
     public void offerFood() {
         Hero.handOverFood("de la Pizza");
+    }
+
+    public void extendHandInFriendship() throws Exception {
+        throw new Exception();
+    }
+
+    public void apologize() {
+        try {
+            Hero.acceptApology();
+        } catch (IOException e) {
+            System.out.println("Capturé !");
+        }
     }
 }

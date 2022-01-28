@@ -2,6 +2,7 @@
 
 package fr.riverjach.interop
 
+import java.io.IOException
 import java.util.*
 
 fun main() {
@@ -19,6 +20,14 @@ fun main() {
     println(adversary.utterGreeting())
 
     adversary.offerFood()
+
+    try {
+        adversary.extendHandInFriendship()
+    } catch (e: Exception) {
+        println("Adieu, vilain monstre !")
+    }
+
+    adversary.apologize()
 }
 
 
@@ -28,6 +37,11 @@ fun makeProclamation() = "Salut, Monstre!"
 @JvmOverloads
 fun handOverFood(leftHand: String = "des baies", rightHand: String = "du boeuf") {
     println("Mmmm... Délicieux : $leftHand et $rightHand")
+}
+
+@Throws(IOException::class)
+fun acceptApology() {
+    throw IOException()
 }
 
 class Spellbook {
