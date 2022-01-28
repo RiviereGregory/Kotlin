@@ -11,8 +11,12 @@ private var Bundle.characterData
     get() = getSerializable(CHARACTER_DATA_KEY) as CharacterGenerator.CharacterData
     set(value) = putSerializable(CHARACTER_DATA_KEY, value)
 
+private fun coroutineCharacterData() = runBlocking {
+    fetchCharacterData().await()
+}
+
 class NewCharacterActivity : AppCompatActivity() {
-    private var characterData = CharacterGenerator.generate()
+    private var characterData = coroutineCharacterData()
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
@@ -23,7 +27,7 @@ class NewCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        characterData = savedInstanceState?.characterData ?: CharacterGenerator.generate()
+        characterData = savedInstanceState?.characterData ?: coroutineCharacterData()
 
         generateButton.setOnClickListener {
             runBlocking {
