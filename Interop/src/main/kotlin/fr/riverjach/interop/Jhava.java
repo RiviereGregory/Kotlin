@@ -16,6 +16,8 @@ public class Jhava {
         }
 
         System.out.println("Nombre maximal de noms : " + Spellbook.MAX_SPELL_COUNT);
+
+        Spellbook.getSpellbookGreeting();
     }
 
     @NotNull
