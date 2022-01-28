@@ -1,9 +1,8 @@
 package gri.riverjach.samodelkin
 
 import android.os.Bundle
-import android.widget.Button
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 class NewCharacterActivity : AppCompatActivity() {
     private var characterData = CharacterGenerator.generate()
@@ -12,13 +11,10 @@ class NewCharacterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val nameTextView = findViewById<TextView>(R.id.nameTextView)
-        val raceTextView = findViewById<TextView>(R.id.raceTextView)
-        val dexterityTextView = findViewById<TextView>(R.id.dexterityTextView)
-        val wisdomTextView = findViewById<TextView>(R.id.wisdomTextView)
-        val strengthTextView = findViewById<TextView>(R.id.strengthTextView)
-        val generateButton = findViewById<Button>(R.id.generateButton)
+        displayCharacterData()
+    }
 
+    private fun displayCharacterData() {
         characterData.run {
             nameTextView.text = name
             raceTextView.text = race
