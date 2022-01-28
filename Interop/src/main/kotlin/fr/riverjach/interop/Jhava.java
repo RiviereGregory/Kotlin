@@ -32,4 +32,8 @@ public class Jhava {
     public void setGreeting(String greeting) {
         this.greeting = greeting;
     }
+
+    public void offerFood() {
+        Hero.handOverFood("de la Pizza");
+    }
 }

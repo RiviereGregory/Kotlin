@@ -1,4 +1,4 @@
-@file:kotlin.jvm.JvmName("Hero")
+@file:kotlin.jvm.JvmName("Hero") // Permet de changer le nom de la class Herokt en Hero
 
 package fr.riverjach.interop
 
@@ -17,7 +17,15 @@ fun main() {
 
     adversary.greeting = "Hello, Héros"
     println(adversary.utterGreeting())
+
+    adversary.offerFood()
 }
 
 
 fun makeProclamation() = "Salut, Monstre!"
+
+// Permet d'avoir en Java la surcharge des paramètres
+@JvmOverloads
+fun handOverFood(leftHand: String = "des baies", rightHand: String = "du boeuf") {
+    println("Mmmm... Délicieux : $leftHand et $rightHand")
+}
