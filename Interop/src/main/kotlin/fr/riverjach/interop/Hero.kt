@@ -1,3 +1,5 @@
+@file:kotlin.jvm.JvmName("Hero")
+
 package fr.riverjach.interop
 
 import java.util.*
@@ -16,3 +18,6 @@ fun main() {
     adversary.greeting = "Hello, Héros"
     println(adversary.utterGreeting())
 }
+
+
+fun makeProclamation() = "Salut, Monstre!"

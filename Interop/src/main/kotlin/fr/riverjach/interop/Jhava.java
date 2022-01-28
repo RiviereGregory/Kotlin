@@ -7,6 +7,10 @@ public class Jhava {
     private int hitPoints = 52489112;
     private String greeting = "BLARGH";
 
+    public static void main(String[] args) {
+        System.out.println(Hero.makeProclamation());
+    }
+
     @NotNull
     public String utterGreeting() {
         return greeting;
