@@ -10,6 +10,10 @@ class NewCharacterActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        generateButton.setOnClickListener {
+            characterData = CharacterGenerator.generate()
+            displayCharacterData()
+        }
 
         displayCharacterData()
     }
